@@ -11,12 +11,15 @@ module.exports = {
   },
 
   getSpot : (req,res) => {
-      res.send(req.params);
+      let spot = req.params.num;
+      Spot.findOne({spot: spot}, (err, spot) => {
+          if(err){res.send(err);}
+          res.send(spot);
+      })
   },
 
   flipSpot : (req, res) => {
     let spot = req.params.num;
-    //res.send(spot);
     Spot.findOne({spot: spot}, (err, spot) => {
         Spot.findOneAndUpdate({_id: spot.id},{taken: !spot.taken}, {upsert: true, 'new': true}, (err,spotUpdate) => {
             res.send(spotUpdate);
