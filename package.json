@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/the-transgineer/POP.io/issues"
   },
-  "homepage": "https://github.com/the-transgineer/POP.io#readme"
+  "homepage": "https://github.com/the-transgineer/POP.io#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.4",
+    "path": "^0.12.7"
+  }
 }
