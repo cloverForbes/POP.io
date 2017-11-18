@@ -5,7 +5,10 @@ const mongoose = require('mongoose'),
 
 const spotSchema = new Schema({
     spot  :  String,
-    taken :  Boolean
+    taken :  {
+        type   : Boolean,
+        default: false
+    }
 });
 
 module.exports = mongoose.model('Spots', spotSchema);

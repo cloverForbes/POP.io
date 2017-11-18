@@ -12,7 +12,7 @@ app.use(function(req, res, next) {
 });
 
 
-//app.use(require('./app/routes'));
+app.use(require('./app/routes'));
 
 
 mongoose.Promise = global.Promise;
