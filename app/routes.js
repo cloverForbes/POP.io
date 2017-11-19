@@ -8,7 +8,7 @@ module.exports = router;
 
 
 router.get('/spots/all', controller.showAll);
-router.post('/spots/new/:num', controller.newSpot);
+router.post('/spots/new/:num/:lot', controller.newSpot);
 router.put('/spots/:num', controller.flipSpot);
 router.get('/spots/:num', controller.getSpot);
 

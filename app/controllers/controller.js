@@ -30,6 +30,7 @@ module.exports = {
   newSpot : (req,res) => {
       let spot = new Spot();
       spot.spot = req.params.num;
+      spot.lot  = req.parms.spot;
       spot.save((err,spot) => {
           if(err){res.send(err)}
           res.send(spot);

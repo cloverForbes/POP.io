@@ -8,7 +8,8 @@ const spotSchema = new Schema({
     taken :  {
         type   : Boolean,
         default: false
-    }
+    },
+    lot   : String
 });
 
 module.exports = mongoose.model('Spots', spotSchema);
