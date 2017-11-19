@@ -15,7 +15,7 @@ const express  = require('express'),
     next();
 });*/
 
-app.use(cors());
+/*app.use(cors());*/
 app.use(require('./app/routes'));
 
 
