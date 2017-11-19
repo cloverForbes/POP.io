@@ -19,7 +19,8 @@ module.exports = {
                     destination = destination + `%7C${item.lat}%2C${item.lon}`
                 }
             });
-            request.get(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${originLat},${originLon}&destinations=${destination}&key=AIzaSyBXk-d-eakNvoexWAR6CD3xV4N9_ukmvy8` ,(err, response, body) => {
+            request.get(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${originLat},${originLon}&destinations=${destination}&key=AIzaSyCqT5Ofdx1qAlishPBextMX-6lVcc1TsiM` ,(err, response, body) => {
+                console.log(body);
                 let distances = (JSON.parse(body).rows[0].elements);
 
                 distances.forEach((item,key) => {
