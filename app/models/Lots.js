@@ -7,7 +7,8 @@ const lotSchema = new Schema({
     lat: String,
     lon: String,
     size: Number,
-    address: String
+    address: String,
+    num : String,
 });
 
 module.exports = mongoose.model('Lots', lotSchema);
