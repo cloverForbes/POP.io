@@ -4,9 +4,44 @@ const request = require('request');
 
 module.exports = {
     getAll : (req, res) => {
+        let originLat = req.params.lat;
+        let originLon = req.params.lon;
+        console.log(originLat);
+        console.log(originLon);
         Lot.find({}, (err, lots) => {
             if(err) {res.send(err)}
-            res.send(lots);
+            let destination = '';
+            lots.forEach((item, key) => {
+                if(key<1) {
+                    destination = destination + `${item.lat}%2C${item.lon}`
+                }
+                else{
+                    destination = destination + `%7C${item.lat}%2C${item.lon}`
+                }
+            });
+            request.get(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${originLat},${originLon}&destinations=${destination}&key=AIzaSyBXk-d-eakNvoexWAR6CD3xV4N9_ukmvy8` ,(err, response, body) => {
+                let distances = (JSON.parse(body).rows[0].elements);
+
+                distances.forEach((item,key) => {
+                    item.num = key;
+                });
+
+                distances.sort((a,b) => {
+                    return a.distance.value > b.distance.value;
+                });
+
+                distances = distances.map(item => {
+                    return item.num;
+                });
+
+                finalArray = [];
+                distances.forEach(item => {
+                    finalArray.push(lots[item])
+                });
+
+                res.send(finalArray);
+            });
+
         })
     },
 

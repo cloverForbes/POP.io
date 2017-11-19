@@ -12,5 +12,5 @@ router.post('/spots/new/:lot/:num', controller.newSpot);
 router.put('/spots/:lot/:num', controller.flipSpot);
 router.get('/spots/:lot/:num', controller.getSpot);
 
-router.get('/lots/all', lotCon.getAll);
+router.get('/lots/all/:lat/:lon', lotCon.getAll);
 router.post('/lots/:num/:size/:lat/:lon/', lotCon.newLot);
