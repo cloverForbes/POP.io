@@ -2,7 +2,7 @@ const Spot = require('../models/spots');
 
 module.exports = {
   showAll : (req, res) => {
-      Spot.find({}, (err, spots) => {
+      Spot.find({lot: req.params.lot}, (err, spots) => {
           if(err){
               res.send(err);
           }
